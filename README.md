@@ -1,6 +1,6 @@
 # My fork of st
 
-The Suckless Terminal - [https://st.suckless.org/]
+The Suckless Terminal - https://st.suckless.org/
 
 ## Patches
 
