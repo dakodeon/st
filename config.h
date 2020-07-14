@@ -262,14 +262,13 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
-	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
  	{ TERMMOD,              XK_Escape,      keyboard_select,{.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 	{ TERMMOD,              XK_L,           externalpipe,   {.v = openurlcmd} },
-	{ TERMMOD,              XK_U,           externalpipe,   {.v = copyurlcmd} },
+	{ TERMMOD,              XK_Y,           externalpipe,   {.v = copyurlcmd} },
 	{ TERMMOD,              XK_X,           externalpipe,   {.v = copyoutput} },
 };
 
