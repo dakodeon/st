@@ -13,4 +13,8 @@ Here are the patches applied in order of precedence:
 - alpha
 - selectioncolors
 - selectionbg-alpha
+- keyboard_select
+- boxdraw
+- externalpipe
 
+For the external pipe functions I used modified versions of Luke Smith's scripts st-urlhandler and st-copyout. These should be copied over somewhere to the $PATH.
