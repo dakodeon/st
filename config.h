@@ -138,7 +138,6 @@ static const char *colorname[] = {
 	"black",
 };
 
-
 /*
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
@@ -250,6 +249,8 @@ static char *openurlcmd[] = { "/bin/sh", "-c", "st-urlhandler", "externalpipe", 
 
 static char *copyurlcmd[] = { "/bin/sh", "-c", "st-urlhandler -c", "externalpipe", NULL };
 
+static char *copyoutput[] = { "/bin/sh", "-c", "st-copyout", "externalpipe", NULL };
+
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
 	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
@@ -269,6 +270,7 @@ static Shortcut shortcuts[] = {
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 	{ TERMMOD,              XK_L,           externalpipe,   {.v = openurlcmd} },
 	{ TERMMOD,              XK_U,           externalpipe,   {.v = copyurlcmd} },
+	{ TERMMOD,              XK_X,           externalpipe,   {.v = copyoutput} },
 };
 
 /*
