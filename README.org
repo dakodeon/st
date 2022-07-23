@@ -90,7 +90,11 @@ static Shortcut shortcuts[] = {
 So, Ctrl+Shift+l to visit a URL, Ctrl+Shift+y to copy a URL and
 Ctrl+Shift+x to copy command output.
 
+The scripts used are kept in the folder =externalpipe_scripts=. We can link
+them somewhere in the path.
+
 ** ORIGINAL README
+
 st - simple terminal
 --------------------
 st is a simple terminal emulator for X which sucks less.
