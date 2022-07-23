@@ -91,7 +91,9 @@ So, Ctrl+Shift+l to visit a URL, Ctrl+Shift+y to copy a URL and
 Ctrl+Shift+x to copy command output.
 
 The scripts used are kept in the folder =externalpipe_scripts=. We can link
-them somewhere in the path.
+them somewhere in the path. /--NOTE: In my case I had to use hardlinks
+because the target directory is part of my =dotfiles= repo, and is
+soft-linked to my system./
 
 ** ORIGINAL README
 
