@@ -1,0 +1,127 @@
+* LUKEBASS ST BUILD
+
+This is my new build for ST, based on version 0.8.5.
+It was initially build on [2022-07-22], and brought to the state of my
+previous build.
+
+The =gitignore= file includes the =orig= and =rej= files created by the
+=patch= command, also all the binaries. It also includes the =patches=
+directory, which includes all the downloaded patches.
+
+** APPLIED PATCHES
+
+*** 1. Scrollback patch
+
+Allows scrolling back on the terminal content, using Shift+PgUp/PgDown
+
+*** 2. Scrollback-mouse patch
+
+Allows scrolling back using the mouse scroll. Uses Shift+scroll.
+
+*** 3. Scrollback-altscreen patch
+
+Integrates scrolling with programs like man and less. Negates the necessity
+of using Shift to scroll terminal content using the mouse.
+
+*** 4. Xresources patch
+
+Use colors and fonts defined in the =Xresouces= file
+
+*** 5. Vertcenter patch
+
+Centers the font in the line height, in case a larger line height is defined.
+
+*** 6. Alpha patch
+
+Adds an option to have transparent background with non-transparent
+foreground elements.
+
+*** 7. Selection colors patch
+
+Adds two colors (selectionbg and selectionfg) for selections.
+
+*** 8. Selectionbg alpha patch
+
+Transparent selection background.
+
+*** 9. Keyboard select patch
+
+Use vim-like motions to select text on the terminal screen. Use
+Ctrl+Shift+Escape to enter MOVE mode, use (some) vim bindings to move
+around, use 's' to enter select mode, '/' or '?' to search for text, Escape
+to exit discarding selection and Enter to exit keeping selection.
+
+*** 10. Boxdraw patch
+
+Fixes how boxes are displayed.
+
+/IMPORTANT! It seems to break the selection colors/
+
+*** 11. External pipe patch
+
+This patch allows to pipe the screen of st to external applications. Use
+cases: Visit some URL that appears in the screen, copy the output of a
+command.
+
+I use two scripts (from LukeSmith), =st-urlhandler= and =st-copyout=, which
+should be placed somewhere in the path.
+
+Then, I had to manually add the lines that define the commands and the
+keybindings:
+
+#+begin_src C
+static char *openurlcmd[] = { "/bin/sh", "-c", "st-urlhandler", "externalpipe", NULL };
+static char *copyurlcmd[] = { "/bin/sh", "-c", "st-urlhandler -c", "externalpipe", NULL };
+static char *copyoutput[] = { "/bin/sh", "-c", "st-copyout", "externalpipe", NULL };
+#+end_src
+
+and also:
+
+#+begin_src C
+static Shortcut shortcuts[] = {
+  /* mask                 keysym          function        argument */
+  /* ... other bindings ... */
+  { TERMMOD,              XK_L,		externalpipe, 	{.v = openurlcmd} },
+  { TERMMOD,              XK_Y,		externalpipe, 	{.v = copyurlcmd} },
+  { TERMMOD,              XK_X,		externalpipe, 	{.v = copyoutput} },
+};
+#+end_src
+
+So, Ctrl+Shift+l to visit a URL, Ctrl+Shift+y to copy a URL and
+Ctrl+Shift+x to copy command output.
+
+** ORIGINAL README
+st - simple terminal
+--------------------
+st is a simple terminal emulator for X which sucks less.
+
+
+Requirements
+------------
+In order to build st you need the Xlib header files.
+
+
+Installation
+------------
+Edit config.mk to match your local setup (st is installed into
+the /usr/local namespace by default).
+
+Afterwards enter the following command to build and install st (if
+necessary as root):
+
+    make clean install
+
+
+Running st
+----------
+If you did not install st with make clean install, you must compile
+the st terminfo entry with the following command:
+
+    tic -sx st.info
+
+See the man page for additional details.
+
+Credits
+-------
+Based on Aurélien APTEL <aurelien dot aptel at gmail dot com> bt source code.
+
