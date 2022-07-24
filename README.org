@@ -55,7 +55,9 @@ to exit discarding selection and Enter to exit keeping selection.
 
 Fixes how boxes are displayed.
 
-/IMPORTANT! It seems to break the selection colors/
+There was some buggy behaviour messing with the selection
+colors/selectionbg alpha patches. This was due to some overlapping
+attributes in =st.h=. Fixed it.
 
 *** 11. External pipe patch
 
